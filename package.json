@@ -18,7 +18,8 @@
     "@types/three": "^0.159.0",
     "jotai": "^2.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
