@@ -8,19 +8,21 @@ import SectionContainer from './components/SectionContainer';
 import Header from './components/Header';
 import Watch from './models/Watch';
 import SpotLightWithHelper from './helper/SpotLightWithHelper';
+import Hero from './components/Hero';
 
 function App() {
   const sheet = getProject('Product').sheet('Scene');
   return (
     <>
       <Header />
-      <main className="h-full bg-yellow-500">
+      <main className="h-full">
         <Canvas gl={{ preserveDrawingBuffer: true }}>
           <ScrollControls pages={5}>
             <SheetProvider sheet={sheet}>
               <Scene />
             </SheetProvider>
-            {/* <Scroll html>
+            <Scroll html>
+              <Hero />
               <SectionContainer>
                 <h1 className="text-3xl text-white">Experience Innovation on Your Wrist!</h1>
               </SectionContainer>
@@ -33,10 +35,7 @@ function App() {
               <SectionContainer>
                 <h1 className="text-3xl text-white">Experience Innovation on Your Wrist!</h1>
               </SectionContainer>
-              <SectionContainer>
-                <h1 className="text-3xl text-white">Experience Innovation on Your Wrist!</h1>
-              </SectionContainer>
-            </Scroll> */}
+            </Scroll>
           </ScrollControls>
         </Canvas>
       </main>

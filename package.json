@@ -16,9 +16,11 @@
     "@theatre/r3f": "^0.7.0",
     "@theatre/studio": "^0.7.0",
     "@types/three": "^0.159.0",
+    "framer-motion": "^10.16.14",
     "jotai": "^2.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
