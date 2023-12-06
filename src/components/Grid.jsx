@@ -57,6 +57,14 @@ export default function Grid() {
       <div className="border" />
       <div className="border" />
       <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
+      <div className="border" />
     </div>
   );
 }

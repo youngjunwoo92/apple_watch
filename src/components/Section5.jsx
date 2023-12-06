@@ -3,7 +3,7 @@ import Grid from '../components/Grid';
 function Section5() {
   return (
     <div className="flex h-full flex-col items-center">
-      <h1 className="text-3xl text-white">Section5</h1>
+      <h1 className="text-3xl">Section5</h1>
       {/* <Grid /> */}
     </div>
   );
