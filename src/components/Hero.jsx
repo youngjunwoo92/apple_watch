@@ -1,9 +1,10 @@
 import SectionWrapper from './../hoc/SectionWrapper';
 import { FaApple } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 function Hero() {
   return (
-    <div className="flex h-full flex-col items-center justify-center p-2 md:p-4">
+    <motion.div className="flex h-full flex-col items-center justify-center">
       <div className="flex items-start">
         <FaApple color="white" size={32} />
         <h1 className="text-3xl text-white">WATCH</h1>
@@ -12,7 +13,7 @@ function Hero() {
       <h2 className="mt-4 text-center text-4xl font-bold text-white">
         Smarter. Brighter. Mightier.
       </h2>
-    </div>
+    </motion.div>
   );
 }
 
