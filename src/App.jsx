@@ -14,6 +14,8 @@ import Hero from './components/Hero';
 import scrollAnimation from './scrollAnimation.json';
 import { useAtom } from 'jotai';
 import { currentPageAtom, currentSceneOffsetAtom } from './atom/atom';
+import { Suspense } from 'react';
+import Loading from './components/Loading';
 
 function App() {
   const sheet = getProject('Product', { state: scrollAnimation }).sheet('Scene');
@@ -33,7 +35,6 @@ function App() {
           <SheetProvider sheet={sheet}>
             <Scene />
           </SheetProvider>
-          {/* <Scroll html className="w-full"></Scroll> */}
         </ScrollControls>
       </Canvas>
     </>
@@ -41,11 +42,3 @@ function App() {
 }
 
 export default App;
-
-const Container = ({ children }) => {
-  return (
-    <div className="pointer-events-none absolute z-10 h-screen w-screen pt-[44px]">
-      <div className="w-[90vw] text-center">{children}</div>
-    </div>
-  );
-};

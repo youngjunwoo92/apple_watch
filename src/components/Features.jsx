@@ -4,7 +4,7 @@ function Features({ isVisible }) {
   return (
     <div className={`flex h-full flex-col ${isVisible ? 'fade-in' : 'fade-out'}`}>
       <div
-        className={`flex translate-y-[5rem] flex-col items-center p-4 text-center sm:translate-y-[10rem]`}>
+        className={`flex translate-y-[4rem] flex-col items-center p-4 text-center sm:translate-y-[10rem]`}>
         <h2 className="mt-4 text-center text-3xl font-bold font-bold md:text-4xl">
           Advanced Features
         </h2>

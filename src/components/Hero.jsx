@@ -6,7 +6,7 @@ function Hero({ isVisible }) {
   return (
     <div className={`flex h-full flex-col ${isVisible ? 'fade-in' : 'fade-out'}`}>
       <div
-        className={`flex translate-y-[5rem] flex-col items-center text-center sm:translate-y-[10rem]`}>
+        className={`flex translate-y-[4rem] flex-col items-center text-center sm:translate-y-[10rem]`}>
         <div className="flex items-start">
           <FaApple color="white" size={32} />
           <h1 className="text-3xl">WATCH</h1>
