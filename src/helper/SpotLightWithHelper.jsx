@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 
 extend({ SpotLightHelper });
 
-export default function SpotLightWithHeloper({ showHelper = true, ...props }) {
+export default function SpotLightWithHelper({ showHelper = true, ...props }) {
   const { scene } = useThree();
   const helperRef = useRef();
   const ref = useRef();
