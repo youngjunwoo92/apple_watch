@@ -21,7 +21,7 @@ function App() {
       <Header />
       <main className="h-full w-full pt-[44px]">
         <Canvas gl={{ preserveDrawingBuffer: true }}>
-          <ScrollControls pages={5}>
+          <ScrollControls pages={5} distance={1} damping={0.4}>
             <SheetProvider sheet={sheet}>
               <Scene />
             </SheetProvider>
