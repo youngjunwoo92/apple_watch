@@ -14,8 +14,6 @@ import Hero from './components/Hero';
 import scrollAnimation from './scrollAnimation.json';
 import { useAtom } from 'jotai';
 import { currentPageAtom, currentSceneOffsetAtom } from './atom/atom';
-import { Suspense } from 'react';
-import Loading from './components/Loading';
 
 function App() {
   const sheet = getProject('Product', { state: scrollAnimation }).sheet('Scene');
