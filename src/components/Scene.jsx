@@ -5,14 +5,34 @@ import { val } from '@theatre/core';
 
 import SpotLightWithHelper from '../helper/SpotLightWithHelper';
 import Watch from '../models/Watch';
+import { useAtom } from 'jotai';
+import { currentPageAtom, currentSceneOffsetAtom } from './../atom/atom';
 
 export default function Scene() {
   const sheet = useCurrentSheet();
   const scroll = useScroll();
 
+  const [currentPage, setCurrentPage] = useAtom(currentPageAtom);
+  const [currentSceneOffset, setCurrentSceneOffset] = useAtom(currentSceneOffsetAtom);
+
+  const sequenceLength = val(sheet.sequence.pointer.length);
+
+  function logCurrentPage(scroll, callback) {
+    const currentPage = Math.floor(scroll.offset * scroll.pages) + 1;
+    const positionWithinPage = (scroll.offset * scroll.pages) % 1;
+    const sceneOffset = Math.floor(positionWithinPage * 4) + 1;
+
+    callback(currentPage);
+    setCurrentSceneOffset(sceneOffset);
+  }
+
   useFrame(() => {
-    const sequenceLength = val(sheet.sequence.pointer.length);
-    sheet.sequence.position = scroll.offset * sequenceLength;
+    // const sequenceLength = val(sheet.sequence.pointer.length);
+    // sheet.sequence.position = scroll.offset * sequenceLength;
+    if (scroll) {
+      logCurrentPage(scroll, setCurrentPage);
+      sheet.sequence.position = scroll.offset * sequenceLength;
+    }
   });
 
   return (

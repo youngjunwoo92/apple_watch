@@ -1,6 +1,6 @@
 export default function Grid() {
   return (
-    <div className="grid h-full w-full grid-cols-8">
+    <div className="absolute inset-0 grid h-full w-full grid-cols-8">
       <div className="border" />
       <div className="border" />
       <div className="border" />

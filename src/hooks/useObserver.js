@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
 
-export default function useObserver() {
+export default function useObserver(inView) {
   const animation = useAnimation();
-  const { ref, inView } = useInView();
+  const { ref } = useInView();
 
   useEffect(() => {
     if (inView) {

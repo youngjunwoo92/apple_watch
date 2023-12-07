@@ -5,8 +5,8 @@ import SectionWrapper from './../hoc/SectionWrapper';
 import useObserver from './../hooks/useObserver';
 import { fadeIn } from '../utilities/motion';
 
-function Hero() {
-  const { ref, animation } = useObserver();
+function Hero({ page, offset }) {
+  const { ref, animation } = useObserver(page === 1 && (offset === 1 || offset === 2));
 
   return (
     <div className="flex h-full flex-col">

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { staggerContainer } from './../utilities/motion';
 
 export default function SectionWrapper(Component, styles = '') {
-  return function HOC() {
+  return function HOC(props) {
     return (
       <motion.section
         variants={staggerContainer()}
@@ -12,7 +12,7 @@ export default function SectionWrapper(Component, styles = '') {
         viewport={{ once: true, amount: 0.25 }}
         className={`h-[calc(100vh-44px)] ${styles}`}>
         <div className="mx-auto h-full max-w-5xl">
-          <Component />
+          <Component {...props} />
         </div>
       </motion.section>
     );
