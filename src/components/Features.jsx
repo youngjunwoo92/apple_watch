@@ -1,27 +1,17 @@
-import { motion } from 'framer-motion';
-
 import SectionWrapper from '../hoc/SectionWrapper';
-import useObserver from './../hooks/useObserver';
-import { fadeIn } from '../utilities/motion';
 
-function Features({ page, offset }) {
-  const { ref, animation } = useObserver(page === 2 && (offset === 1 || offset === 2));
-  // const { ref, animation } = useObserver(true);
-
+function Features({ isVisible }) {
   return (
-    <div className="relative flex h-full justify-center text-center">
-      <motion.div
-        ref={ref}
-        variants={fadeIn()}
-        animate={animation}
-        className="w-full max-w-xs translate-y-[10rem] px-4 md:translate-y-[15rem]">
+    <div className={`flex h-full flex-col ${isVisible ? 'fade-in' : 'fade-out'}`}>
+      <div className={`flex translate-y-[8rem] flex-col items-center p-4 text-center`}>
         <h2 className="mt-4 text-center text-3xl  font-bold font-bold md:text-4xl">
           Advanced Features
         </h2>
-        <p className="mt-2 text-lg font-bold text-slate-300 md:text-xl">
+        <p className="mt-2 text-xl font-bold text-slate-200 md:text-2xl">
           Empowering Your Lifestyle with Cutting-Edge Technology.
         </p>
-      </motion.div>
+        <p className="text-md mt-4 md:text-xl">A safety feature we hope you’ll never need.</p>
+      </div>
     </div>
   );
 }

@@ -3,11 +3,13 @@ import { useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { val } from '@theatre/core';
 import { useAtom } from 'jotai';
+import debounce from 'lodash/debounce';
 
 import SpotLightWithHelper from '../helper/SpotLightWithHelper';
 import Watch from '../models/Watch';
 
 import { currentPageAtom, currentSceneOffsetAtom } from './../atom/atom';
+import { useEffect } from 'react';
 
 export default function Scene() {
   const sheet = useCurrentSheet();
@@ -31,7 +33,7 @@ export default function Scene() {
     if (scroll) {
       const offset = scroll.offset;
       const pages = scroll.pages;
-      console.log({ offset, pages, sequenceLength });
+      // console.log({ offset, pages, sequenceLength });
       logCurrentPage(offset, pages, setCurrentPage);
       sheet.sequence.position = offset * sequenceLength;
     }

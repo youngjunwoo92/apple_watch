@@ -1,4 +1,4 @@
-import { useGLTF, useAnimations } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 
 export default function Watch() {
   const model = useGLTF('./appleWatch.glb');

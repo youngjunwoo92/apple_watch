@@ -1,25 +1,21 @@
-import { motion } from 'framer-motion';
+import { FaApple } from 'react-icons/fa';
 
 import SectionWrapper from '../hoc/SectionWrapper';
-import useObserver from '../hooks/useObserver';
-import { fadeIn } from '../utilities/motion';
 
-function BuyNow({ page, offset }) {
-  const { ref, animation } = useObserver((page === 5 && offset === 4) || page === 6);
-
+function BuyNow({ isVisible }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center">
-      <motion.div
-        initial="hidden"
-        animate={animation}
-        variants={fadeIn()}
-        ref={ref}
-        className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold md:text-3xl">From $399</h2>
-        <button className="mt-4 rounded bg-blue-600 px-4 py-2 text-lg transition-colors hover:bg-blue-700">
-          Buy now
-        </button>
-      </motion.div>
+    <div
+      className={`flex h-full flex-col items-center justify-center ${
+        isVisible ? 'fade-in' : 'fade-out'
+      }`}>
+      <div className={`fade-in flex  flex-col items-center text-center`}>
+        <div className="flex items-start">
+          <FaApple color="white" size={32} />
+          <h1 className="text-3xl">WATCH</h1>
+        </div>
+        <p className="text-sm font-bold tracking-widest text-red-500">SERIES 9</p>
+        <p className="mt-4 text-2xl">From $399</p>
+      </div>
     </div>
   );
 }

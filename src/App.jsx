@@ -17,30 +17,35 @@ import { currentPageAtom, currentSceneOffsetAtom } from './atom/atom';
 
 function App() {
   const sheet = getProject('Product', { state: scrollAnimation }).sheet('Scene');
-  const [currentSceneOffset] = useAtom(currentSceneOffsetAtom);
-  const [currentPage] = useAtom(currentPageAtom);
+  const [offset] = useAtom(currentSceneOffsetAtom);
+  const [page] = useAtom(currentPageAtom);
 
   return (
     <>
       <Header />
-      <main className="h-full w-full overflow-hidden pt-[44px]">
-        <Canvas gl={{ preserveDrawingBuffer: true }}>
-          <ScrollControls pages={5} damping={0.1}>
-            <SheetProvider sheet={sheet}>
-              <Scene />
-            </SheetProvider>
-            <Scroll html className="w-full">
-              <Hero page={currentPage} offset={currentSceneOffset} />
-              <Features page={currentPage} offset={currentSceneOffset} />
-              <FamilySetup page={currentPage} offset={currentSceneOffset} />
-              <Customization page={currentPage} offset={currentSceneOffset} />
-              <BuyNow page={currentPage} offset={currentSceneOffset} />
-            </Scroll>
-          </ScrollControls>
-        </Canvas>
-      </main>
+      <Hero isVisible={page === 1 && (offset === 1 || offset === 2)} />
+      <Features isVisible={page === 2 && (offset === 1 || offset === 2)} />
+      <FamilySetup isVisible={page === 3 && (offset === 2 || offset === 3)} />
+      <Customization isVisible={page === 4 && (offset === 2 || offset === 3)} />
+      <BuyNow isVisible={(page === 5 && offset === 4) || page === 6} />
+      <Canvas gl={{ physicallCorrectLights: true, preserveDrawingBuffer: true }}>
+        <ScrollControls pages={5} damping={0.5} maxSpeed={0.5}>
+          <SheetProvider sheet={sheet}>
+            <Scene />
+          </SheetProvider>
+          {/* <Scroll html className="w-full"></Scroll> */}
+        </ScrollControls>
+      </Canvas>
     </>
   );
 }
 
 export default App;
+
+const Container = ({ children }) => {
+  return (
+    <div className="pointer-events-none absolute z-10 h-screen w-screen pt-[44px]">
+      <div className="w-[90vw] text-center">{children}</div>
+    </div>
+  );
+};
