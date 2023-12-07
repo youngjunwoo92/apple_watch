@@ -9,7 +9,7 @@ function Hero({ page, offset }) {
   const { ref, animation } = useObserver(page === 1 && (offset === 1 || offset === 2));
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="pointer-events-none flex h-full flex-col">
       <motion.div
         initial="hidden"
         animate={animation}

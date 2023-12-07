@@ -2,10 +2,11 @@ import { PerspectiveCamera, useCurrentSheet } from '@theatre/r3f';
 import { useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { val } from '@theatre/core';
+import { useAtom } from 'jotai';
 
 import SpotLightWithHelper from '../helper/SpotLightWithHelper';
 import Watch from '../models/Watch';
-import { useAtom } from 'jotai';
+
 import { currentPageAtom, currentSceneOffsetAtom } from './../atom/atom';
 
 export default function Scene() {
@@ -17,9 +18,9 @@ export default function Scene() {
 
   const sequenceLength = val(sheet.sequence.pointer.length);
 
-  function logCurrentPage(scroll, callback) {
-    const currentPage = Math.floor(scroll.offset * scroll.pages) + 1;
-    const positionWithinPage = (scroll.offset * scroll.pages) % 1;
+  function logCurrentPage(offset, pages, callback) {
+    const currentPage = Math.floor(offset * pages) + 1;
+    const positionWithinPage = (offset * pages) % 1;
     const sceneOffset = Math.floor(positionWithinPage * 4) + 1;
 
     callback(currentPage);
@@ -27,11 +28,12 @@ export default function Scene() {
   }
 
   useFrame(() => {
-    // const sequenceLength = val(sheet.sequence.pointer.length);
-    // sheet.sequence.position = scroll.offset * sequenceLength;
     if (scroll) {
-      logCurrentPage(scroll, setCurrentPage);
-      sheet.sequence.position = scroll.offset * sequenceLength;
+      const offset = scroll.offset;
+      const pages = scroll.pages;
+      console.log({ offset, pages, sequenceLength });
+      logCurrentPage(offset, pages, setCurrentPage);
+      sheet.sequence.position = offset * sequenceLength;
     }
   });
 

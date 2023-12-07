@@ -20,14 +20,12 @@ function App() {
   const [currentSceneOffset] = useAtom(currentSceneOffsetAtom);
   const [currentPage] = useAtom(currentPageAtom);
 
-  console.log({ currentPage, currentSceneOffset });
-
   return (
     <>
       <Header />
-      <main className="h-full w-full pt-[44px]">
+      <main className="h-full w-full overflow-hidden pt-[44px]">
         <Canvas gl={{ preserveDrawingBuffer: true }}>
-          <ScrollControls pages={5} distance={1} damping={0.4}>
+          <ScrollControls pages={5} damping={0.1}>
             <SheetProvider sheet={sheet}>
               <Scene />
             </SheetProvider>
