@@ -20,6 +20,8 @@ function App() {
   const [currentSceneOffset] = useAtom(currentSceneOffsetAtom);
   const [currentPage] = useAtom(currentPageAtom);
 
+  console.log({ currentPage, currentSceneOffset });
+
   return (
     <>
       <Header />

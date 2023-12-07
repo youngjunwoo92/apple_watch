@@ -5,7 +5,7 @@ import useObserver from '../hooks/useObserver';
 import { fadeIn } from '../utilities/motion';
 
 function BuyNow({ page, offset }) {
-  const { ref, animation } = useObserver(page === 5 && offset === 4);
+  const { ref, animation } = useObserver((page === 5 && offset === 4) || page === 6);
 
   return (
     <div className="flex h-full flex-col items-center justify-center">
